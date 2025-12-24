@@ -5,139 +5,151 @@ A full-stack, multi-page e-commerce application built using React (Vite), Node.j
 ## Tech Stack
 
 ### Frontend
-- ReactJS (Vite)
-- Functional Components & Hooks
-- React Router DOM
-- Tailwind CSS
-- Lucide React (Icons)
+- **ReactJS (Vite)** - Functional Components & Hooks
+- **React Router DOM** - Client-side routing
+- **Tailwind CSS** - Styling
+- **Lucide React** - Icons
 
 ### Backend
-- Node.js
-- Express.js
-- RESTful API Design
+- **Node.js** - Runtime environment
+- **Express.js** - Web framework
+- **RESTful API Design** - API architecture
 
 ### Database
-- MongoDB (Mongoose)
+- **MongoDB** - NoSQL database
+- **Mongoose** - ODM (Object Data Modeling)
 
 ## Project Structure
 
 ### Frontend
-```text
+```
 frontend/
-├─ src/
-│  ├─ assets/
-│  ├─ components/
-│  ├─ pages/
-│  ├─ context/
-│  ├─ hooks/
-│  ├─ config/
-│  ├─ App.jsx
-│  ├─ main.jsx
-│  └─ index.css
-├─ public/
-├─ .env
-├─ package.json
-└─ vite.config.js
-Backend
+├── src/
+│   ├── assets/
+│   ├── components/
+│   ├── pages/
+│   ├── context/
+│   ├── hooks/
+│   ├── config/
+│   ├── App.jsx
+│   ├── main.jsx
+│   └── index.css
+├── public/
+├── .env
+├── package.json
+└── vite.config.js
+```
 
-Plaintext
+### Backend
+```
 backend/
-├─ controllers/
-├─ routes/
-├─ models/
-├─ middleware/
-├─ config/
-├─ server.js
-├─ .env
-└─ package.json
-Setup Instructions
-1. Clone the Repository
+├── controllers/
+├── routes/
+├── models/
+├── middleware/
+├── config/
+├── server.js
+├── .env
+└── package.json
+```
 
-Bash
-git clone [https://github.com/pradnyeshbhalekar/assignment](https://github.com/pradnyeshbhalekar/assignment)
+## Setup Instructions
+
+### 1. Clone the Repository
+```bash
+git clone https://github.com/pradnyeshbhalekar/assignment
 cd assignment
-2. Backend Setup
+```
 
-Bash
+### 2. Backend Setup
+```bash
 cd backend
 npm install
-Create a .env file in the backend directory:
+```
 
-Code snippet
+Create a `.env` file in the backend directory:
+```env
 PORT=3000
 MONGO_URI=mongodb://127.0.0.1:27017/ecommerce
+
 # For MongoDB Atlas:
 # MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/ecommerce
+```
+
 Start the server:
-
-Bash
+```bash
 npm run dev
-The backend will run on: http://localhost:3000
+```
 
-3. Frontend Setup
+The backend will run on: **http://localhost:3000**
 
-Bash
+### 3. Frontend Setup
+```bash
 cd ../frontend
 npm install
-Create a .env file in the frontend directory:
+```
 
-Code snippet
+Create a `.env` file in the frontend directory:
+```env
 VITE_API_BASE_URL=http://localhost:3000/api
+```
+
 Start the frontend:
-
-Bash
+```bash
 npm run dev
-The frontend will run on: http://localhost:5173
+```
 
-Database Setup
-Install MongoDB locally or use MongoDB Atlas.
+The frontend will run on: **http://localhost:5173**
 
-Create a database named ecommerce.
+## Database Setup
 
-Required collections: products, categories, carts.
+- Install MongoDB locally or use MongoDB Atlas
+- Create a database named `ecommerce`
+- Required collections: `products`, `categories`, `carts`
 
-Product Data Structure:
+### Product Data Structure
+- Title
+- Description
+- Price
+- Category
+- Image URL
+- Timestamps (CreatedAt/UpdatedAt)
 
-Title
+## API Endpoints
 
-Description
+### Products
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/products` | Fetch all products |
+| GET | `/api/products/:id` | Fetch product by ID |
+| POST | `/api/products` | Create new product |
+| PUT | `/api/products/:id` | Update product |
+| DELETE | `/api/products/:id` | Delete product |
 
-Price
+### Categories
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | `/api/categories` | Fetch all categories |
 
-Category
+### Cart
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/cart` | Add product to cart |
+| GET | `/api/cart` | Get cart items |
+| DELETE | `/api/cart/:id` | Remove cart item |
 
-Image URL
+> **Note:** Cart logic automatically increments quantity if the product already exists.
 
-Timestamps (CreatedAt/UpdatedAt)
+## Frontend Routing & State
 
-API Endpoints
-Products
+### Routes
+- `/` - Home / Product Listing
+- `/product/:id` - Product Details
+- `/cart` - Shopping Cart
+- `*` - 404 Page
 
-Method	Endpoint	Description
-GET	/api/products	Fetch all products
-GET	/api/products/:id	Fetch product by ID
-POST	/api/products	Create new product
-PUT	/api/products/:id	Update product
-DELETE	/api/products/:id	Delete product
-Categories
-
-Method	Endpoint	Description
-GET	/api/categories	Fetch all categories
-Cart
-
-Method	Endpoint	Description
-POST	/api/cart	Add product to cart
-GET	/api/cart	Get cart items
-DELETE	/api/cart/:id	Remove cart item
-Note: Cart logic automatically increments quantity if the product already exists.
-
-Frontend Routing & State
-/ : Home / Product Listing
-
-/product/:id : Product Details
-
-/cart : Shopping Cart
-
-* : 404 Page
-
-State Management: React Context API is used to manage global state for Products, Cart, and Cart Count.
+### State Management
+React Context API is used to manage global state for:
+- Products
+- Cart
+- Cart Count
